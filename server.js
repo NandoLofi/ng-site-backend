@@ -25,6 +25,8 @@ db.once('open', ()=>{
 
 const contactEmail = nodemailer.createTransport({
     service: 'gmail',
+    secure: true,
+    port: 4000,
     auth: {
         user: EMAIL,
         pass: EMAIL_PASSWORD
