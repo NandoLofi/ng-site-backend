@@ -49,11 +49,12 @@ app.post('/request', (req, res) => {
     const name = req.body.name
     const email = req.body.email
     const message = req.body.message
+    const phone = req.body.phone
     const mail = {
         from: name, 
         to: "nge@ngexc.com",
         subject: "Request Information",
-        html: `<p> Name: ${name}</p> <p> Email: ${email}</p> Messge: ${message} </p>`,
+        html: `<p> Name: ${name}</p> <p> Email: ${email}</p> Messge: ${message} </p> <p> Phone: ${phone} </p>`,
     }
     contactEmail.sendMail(mail, (error)=> {
         if (error) {
