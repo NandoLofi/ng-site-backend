@@ -45,8 +45,23 @@ contactEmail.verify((error) =>{
 app.get("/", (req, res) =>{
     res.send("Welcome Home")
 })
-app.post('/request/new', (req, res) => {
-    const newInfo = req.body
+app.post('/request', (req, res) => {
+    const name = req.body.name
+    const email = req.body.email
+    const message = req.body.message
+    const mail = {
+        from: name, 
+        to: "nge@ngexc.com",
+        subject: "Request Information",
+        html: `<p> Name: ${name}</p> <p> Email: ${email}</p> Messge: ${message} </p>`,
+    }
+    contactEmail.sendMail(mail, (error)=> {
+        if (error) {
+            res.json({ status: "Error" })
+        } else {
+            res.json({ status: "Message Sent"})
+        }
+    })
 })
 
 
