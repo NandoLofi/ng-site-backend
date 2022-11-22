@@ -45,7 +45,7 @@ contactEmail.verify((error) =>{
 app.get("/", (req, res) =>{
     res.send("Welcome Home")
 })
-app.post('/request', (req, res) => {
+app.post('/contact', (req, res) => {
     const name = req.body.name
     const email = req.body.email
     const message = req.body.message
