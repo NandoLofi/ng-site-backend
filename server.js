@@ -2,8 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 4000
-const mongoose = require('mongoose')
-const DATABASE_URI = process.env.DATABASE_URI
 const cors = require('cors')
 const nodemailer = require('nodemailer')
 const EMAIL = process.env.EMAIL
@@ -13,15 +11,6 @@ app.use(express.json())
 app.use(cors())
 
 
-const db = mongoose.connection
-mongoose.connect(DATABASE_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-
-db.once('open', ()=>{
-    console.log("Mongo connected")
-})
 
 const contactEmail = nodemailer.createTransport({
     service: 'gmail',
